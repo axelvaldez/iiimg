@@ -20,6 +20,7 @@ const mainHeader = document.getElementById('mainHeader')
 const authBtn = document.getElementById('authBtn')
 const loginForm = document.getElementById('loginForm')
 const loginError = document.getElementById('loginError')
+const viewOnlyLink = document.getElementById('viewOnlyLink')
 const logoutBtn = document.getElementById('logoutBtn')
 const uploadBanner = document.getElementById('uploadBanner')
 const dragOverlay = document.getElementById('dragOverlay')
@@ -99,6 +100,13 @@ function showMainApp() {
 function setupEventListeners() {
   // Login form
   loginForm.addEventListener('submit', handleLogin)
+  
+  // View-only link
+  viewOnlyLink.addEventListener('click', (e) => {
+    e.preventDefault()
+    showMainApp()
+    loadImages()
+  })
   
   // Auth button (Login/Logout)
   authBtn.addEventListener('click', () => {
