@@ -31,6 +31,7 @@ const monthHeading = document.getElementById('monthHeading')
 const pagination = document.getElementById('pagination')
 const prevBtn = document.getElementById('prevBtn')
 const nextBtn = document.getElementById('nextBtn')
+const monthSelect = document.getElementById('monthSelect')
 const pageInfo = document.getElementById('pageInfo')
 const overlay = document.getElementById('overlay')
 const overlayImage = document.getElementById('overlayImage')
@@ -168,6 +169,7 @@ function setupEventListeners() {
   // Pagination
   prevBtn.addEventListener('click', () => changeMonth(-1))
   nextBtn.addEventListener('click', () => changeMonth(1))
+  monthSelect.addEventListener('change', handleMonthSelect)
   
   // Overlay
   overlayClose.addEventListener('click', closeOverlay)
@@ -382,7 +384,15 @@ function updateMonthNavigation() {
   
   // Update the heading
   monthHeading.textContent = monthYear
-  pageInfo.textContent = monthYear
+  
+  // Populate month select dropdown
+  monthSelect.innerHTML = availableMonths.map(monthStr => {
+    const [year, month] = monthStr.split('-')
+    const date = new Date(parseInt(year), parseInt(month) - 1, 1)
+    const label = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    const selected = monthStr === currentMonthStr ? 'selected' : ''
+    return `<option value="${monthStr}" ${selected}>${label}</option>`
+  }).join('')
   
   // Find current month index
   const currentIndex = availableMonths.indexOf(currentMonthStr)
@@ -393,6 +403,15 @@ function updateMonthNavigation() {
   
   // Show/hide pagination
   pagination.style.display = availableMonths.length > 1 ? 'flex' : 'none'
+}
+
+function handleMonthSelect() {
+  const selectedMonth = monthSelect.value
+  if (selectedMonth) {
+    const [year, month] = selectedMonth.split('-')
+    currentMonth = new Date(parseInt(year), parseInt(month) - 1, 1)
+    loadImages()
+  }
 }
 
 function changeMonth(direction) {

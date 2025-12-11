@@ -355,12 +355,33 @@ header h1 {
   border-top: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-#pageInfo {
+.month-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: white;
-  font-weight: 600;
-  font-size: 1.2rem;
-  flex: 1;
-  text-align: center;
+  font-size: 0.95rem;
+}
+
+.month-selector select {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.month-selector select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.month-selector select:focus {
+  outline: none;
+  border-color: #a5b4fc;
 }
 
 .pagination button {
