@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Storage</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Login Form -->
+  <div class="login-container" id="loginContainer">
+    <div class="login-box">
+      <h2>iiimg</h2>
+      <p>Login to upload and manage images</p>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <div class="error-message" id="loginError"></div>
+    </div>
+  </div>
+
+  <!-- Header Container (fixed) -->
+  <div class="header-container" id="headerContainer" style="display: none;">
+    <!-- Upload Banner (visible when authenticated) -->
+    <div class="upload-banner" id="uploadBanner" style="display: none;">
+      <p>Drag and drop to upload, or <span class="link">click here to select files</span></p>
+      <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    </div>
+
+    <!-- Header -->
+    <div class="header-wrapper">
+      <header id="mainHeader">
+        <h1>iiimg</h1>
+        <button class="auth-btn" id="authBtn">Login</button>
+      </header>
+    </div>
+  </div>
+
+  <div class="container" id="mainContainer" style="display: none;">
+
+    <!-- Image Gallery -->
+    <div class="gallery-container">
+      <div class="gallery-header">
+        <h2 id="monthHeading">Your Images</h2>
+        <div class="loading" id="loading" style="display: none;">Loading...</div>
+      </div>
+      
+      <div class="gallery" id="gallery">
+        <!-- Images will be inserted here -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination" style="display: none;">
+        <button id="prevBtn" disabled>← Previous Month</button>
+        <span id="pageInfo">December 2025</span>
+        <button id="nextBtn">Next Month →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drag Overlay (appears when dragging files over page) -->
+  <div class="drag-overlay" id="dragOverlay">
+    <div class="drag-overlay-content">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      <p>Drop images here</p>
+    </div>
+  </div>
+
+  <!-- Full-size overlay -->
+  <div class="overlay" id="overlay">
+    <div class="overlay-close" id="overlayClose">&times;</div>
+    <img id="overlayImage" src="" alt="">
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
