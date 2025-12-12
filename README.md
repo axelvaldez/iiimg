@@ -1,4 +1,4 @@
-# iiimg
+# IIIMGS
 
 A minimalist image storage webapp with Supabase backend. Upload, organize, and share your images with a clean interface. [Try it here](https://iiimg.axel.mx).
 
@@ -80,8 +80,8 @@ create index image_metadata_created_at_idx on public.image_metadata(created_at d
 
 ```bash
 # Clone the repo
-git clone https://github.com/axelvaldez/iiimg.git
-cd iiimg
+git clone https://github.com/axelvaldez/iiimgs.git
+cd iiimgs
 
 # Install dependencies
 npm install
@@ -125,7 +125,7 @@ Creates `exports/` folder with:
 
 1. Push to GitHub (already configured)
 2. Go to [netlify.com](https://app.netlify.com/)
-3. Import from GitHub: `axelvaldez/iiimg`
+3. Import from GitHub: `axelvaldez/iiimgs`
 4. Add environment variables:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
